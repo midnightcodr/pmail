@@ -1,0 +1,8 @@
+A python email program. A slightly modifed version from
+
+http://docs.python.org/library/email-examples.html
+
+Started this project because I need a more general purposed
+script that allows me to send files selectively and send
+email through an external smtp server (optional, and no 
+authentication supported yet).
