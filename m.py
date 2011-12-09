@@ -57,6 +57,10 @@ used, generated content is written to filename specified by -o.
 					  type='string', action='append', metavar='ATTACH',
 					  default=[], dest='attachments',
 					  help='filename to attach, optional')
+	parser.add_option('-d', '--debug',
+					  action='store_true', metavar='DEBUG',
+					  default=[], dest='debug',
+					  help='turn on debugging')
 	opts, args = parser.parse_args()
 	if not opts.frm or not opts.recipients:
 		parser.print_help()
@@ -105,13 +109,15 @@ used, generated content is written to filename specified by -o.
 		outer.attach(msg)
 	# Now send or store the message
 	composed = outer.as_string()
+	if opts.debug:
+		print "DEBUG=>", opts
 	if opts.output:
 		fp = open(opts.output, 'w')
 		fp.write(composed)
 		fp.close()
 	else:
 		s = smtplib.SMTP(opts.through)
-		s.sendmail(opts.sender, opts.recipients, composed)
+		s.sendmail(opts.frm, opts.recipients, composed)
 		s.quit()
 
 

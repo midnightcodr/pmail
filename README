@@ -6,3 +6,7 @@ Started this project because I need a more general purposed
 script that allows me to send files selectively and send
 email through an external smtp server (optional, and no 
 authentication supported yet).
+
+Example Usage:
+
+python m.py -s "Example subject line" -r someone@somewhere.somedomain -f me@myserver.mydomain -a "new_python_script.py" -d
